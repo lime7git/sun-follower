@@ -53,7 +53,7 @@ def read_ADC(photo_resostor_number):
             photo_res_2.off()
             photo_res_3.off()
             photo_res_4.off()
-            sleep(0.01)
+            sleep(0.001)
             for i in range (1,1000):
                 mean+=ADC_0.read_u16()/1000
                 
@@ -64,10 +64,9 @@ def read_ADC(photo_resostor_number):
             photo_res_2.off()
             photo_res_3.off()
             photo_res_4.on()
-            sleep(0.01)
+            sleep(0.001)
             for i in range (1,1000):
                 mean+=ADC_0.read_u16()/1000
-                
             return mean
         
     if photo_resostor_number == 3:
@@ -75,7 +74,7 @@ def read_ADC(photo_resostor_number):
             photo_res_2.off()
             photo_res_3.on()
             photo_res_4.off()
-            sleep(0.01)
+            sleep(0.001)
             for i in range (1,1000):
                 mean+=ADC_1.read_u16()/1000
                 
@@ -86,7 +85,7 @@ def read_ADC(photo_resostor_number):
             photo_res_2.on()
             photo_res_3.off()
             photo_res_4.off()
-            sleep(0.01)
+            sleep(0.001)
             for i in range (1,1000):
                 mean+=ADC_1.read_u16()/1000
                 
@@ -144,7 +143,7 @@ while True:
     srednia = mean_value(ph1,ph2,ph3,ph4)
     rozstep = maximum - minimum
     
-    histerese = 1500
+    histerese = 800
     
     check_rotate(ph1,ph2,ph3,ph4)
     check_decline(ph1,ph2,ph3,ph4)
@@ -160,7 +159,6 @@ while True:
     print('rozstep',rozstep)
     print('_______________')
     work_rotate(position_X)
-    sleep(0.5)
     work_decline(position_Y)
     
     
